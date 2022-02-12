@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h2>Registration Form</h2>
+<h2>Registration Form23</h2>
 
 <form action="" method="post">
 <table>
@@ -23,9 +23,9 @@
 
 <tr>
   <td>Designation:</td>
-  <td><input type="radio" name = "language1">Junior Programmer
-  <input type="radio" name = "language2">Senior Programmer
-  <input type="radio" name = "language3">Project Director</td>
+  <td><input type="radio" name = "language" value="r1">Junior Programmer
+  <input type="radio" name = "language" value="r2">Senior Programmer
+  <input type="radio" name = "language" value="r3">Project Director</td>
 </tr>
 <tr>
   <td>Preferred language:</td>
