@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h2>Registration Form23</h2>
+<h2>Registration Form</h2>
 
 <form action="" method="post">
 <table>
