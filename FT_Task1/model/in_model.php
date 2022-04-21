@@ -7,7 +7,7 @@ class db{
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "bepartner";
+        $dbname = "test";
 
         $conn = new mysqli($servername,$username,$password,$dbname);
 
@@ -20,63 +20,26 @@ class db{
 
     }
 
-    function insertJoinData($tname,$email,$pass,$firstName,$lastName,$DOB,$gender,$phone,$pAddress,$oname,$linumber,$tin,$oaddress,$edate,$oemail,$site,$img,$cover,$conn){
+    function insertJoinData($tname,$conn,$name,$age,$email,$pass){
 
-        $sql = "INSERT INTO $tname (email,pass,firstname,lastname,DOB,gender,phone,paddress,oname,linumber,tin,oaddress,edate,oemail,site,img,cover)
-         VALUES('$email','$pass','$firstName','$lastName','$DOB','$gender','$phone','$pAddress','$oname','$linumber','$tin','$oaddress','$edate','$oemail','$site','$img','')";
+        $sql = "INSERT INTO $tname (name,age,email,password) VALUES('$name','$age','$email','$pass')";
         
         if($conn->query($sql)===TRUE){
-            echo "Data inserted";
             return TRUE;
         }
         else{
-            echo "data cant be inserted".$conn->error;
+            echo " ".$conn->error;
             return FALSE;
         }
 
     }
 
-    function fetchData($tablename, $conn, $email){
+    function fetchData($tablename, $conn){
 
-        $sqlsrt = "SELECT * FROM $tablename WHERE email = '$email'";
-
+        $sqlsrt = "SELECT * FROM $tablename";
         $results = $conn->query($sqlsrt);
         return $results;
     }
-
-    function searchData($tablename, $conn, $key, $data){
-
-        $sqlsrt = "SELECT * FROM $tablename WHERE $key = '$data'";
-
-        $results = $conn->query($sqlsrt);
-        return $results;
-    }
-
-
-    function updateData($tname,$email,$pass,$firstName,$lastName,$DOB,$gender,$phone,$pAddress,$oname,$linumber,$tin,$oaddress,$edate,$oemail,$site,$conn,$Memail){
-
-        $sql = "UPDATE $tname SET email = '$email', pass='$pass',firstname='$firstName',lastname='$lastName',DOB='$DOB',gender='$gender',phone='$phone',paddress='$pAddress',oname='$oname',linumber='$linumber',tin='$tin',oaddress='$oaddress',edate='$edate',oemail='$oemail',site='$site' WHERE email = '$Memail'";
-        
-        if($conn->query($sql)===TRUE){
-            echo "Data updated";
-            return TRUE;
-        }
-        else{
-            echo "data cant be inserted".$conn->error;
-            return FALSE;
-        }
-
-    }
-
-    function deleteData($tablename, $conn, $email){
-
-        $sqlsrt = "DELETE FROM $tablename WHERE email = '$email'";
-
-        if($conn->query($sqlsrt)){
-            return TRUE;
-        }
-    }
-
 
     function closecon($conn){
         return $conn->close();
